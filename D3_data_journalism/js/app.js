@@ -76,9 +76,9 @@ d3.csv("D3_data_journalism/data/data.csv").then(function(csvdata) {
     .data(csvdata)
     .enter()
     .append("text")
-    .text(z => z.abbr)
     .attr("x", x => xScale(x.poverty))
     .attr("y", y => yScale(y.healthcare))
+    .text(z => z.abbr)
     .attr("text-anchor", "middle")
     .attr("font-size", 11);
 
@@ -89,5 +89,12 @@ d3.csv("D3_data_journalism/data/data.csv").then(function(csvdata) {
     .attr("x", 0 - (height / 2) - 100)
     .attr("dy", "1em")
     .classed("axis-text", true)
-    .text("Number of Billboard 500 Hits");
-});
+    .text("Lacks Healthcare (%)");
+
+    // Append x axis label
+    chartGroup.append("text")
+    .attr("transform", `translate(${(width / 2) - 40}, ${height + margin.top + 30})`)
+    .text("In Poverty (%)");
+}).catch(function(error) {
+    console.log(error);
+    });
