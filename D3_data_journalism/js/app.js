@@ -36,16 +36,15 @@ d3.csv("D3_data_journalism/data/data.csv").then(function(csvdata) {
     csvdata.forEach(function(data) {
         data.poverty = +data.poverty;
         data.healthcare = +data.healthcare;
-        // console.log(data.healthcare)
     });
 
     // Scales for x and y axis
     var xScale = d3.scaleLinear()
-    .domain(d3.min(csvdata, x => x.poverty), [d3.max(csvdata, x => x.poverty)])
+    .domain([d3.min(csvdata, x => x.poverty), d3.max(csvdata, x => x.poverty)])
     .range([0, width]);
 
     var yScale = d3.scaleLinear()
-    .domain(d3.min(csvdata, x => x.healthcare), [d3.max(csvdata, x => x.healthcare)])
+    .domain([d3.min(csvdata, x => x.healthcare), d3.max(csvdata, x => x.healthcare)])
     .range([height, 0]);
 
     // Create initial axis functions
@@ -58,7 +57,7 @@ d3.csv("D3_data_journalism/data/data.csv").then(function(csvdata) {
     .call(bottomAxis);
 
     // Append y axis
-    chartGroup.append("g")
+    yAxis = chartGroup.append("g")
     .call(leftAxis);
 
     // Append initial circles
@@ -67,7 +66,7 @@ d3.csv("D3_data_journalism/data/data.csv").then(function(csvdata) {
     .enter()
     .append("circle")
     .attr("cx", x => xScale(x.poverty))
-    .attr("cy", x => yScale(x.healthcare))
+    .attr("cy", y => yScale(y.healthcare))
     .attr("r", 10)
     .attr("fill", "pink")
     .attr("opacity", ".5");
