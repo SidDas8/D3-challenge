@@ -61,5 +61,15 @@ d3.csv("D3_data_journalism/data/data.csv").then(function(csvdata) {
     chartGroup.append("g")
     .call(leftAxis);
 
+    // Append initial circles
+    var circlesGroup = chartGroup.selectAll("circle")
+    .data(csvdata)
+    .enter()
+    .append("circle")
+    .attr("cx", x => xScale(x.poverty))
+    .attr("cy", x => yScale(x.healthcare))
+    .attr("r", 10)
+    .attr("fill", "pink")
+    .attr("opacity", ".5");
 
 });
