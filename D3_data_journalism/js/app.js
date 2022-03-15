@@ -78,5 +78,16 @@ d3.csv("D3_data_journalism/data/data.csv").then(function(csvdata) {
     .append("text")
     .text(z => z.abbr)
     .attr("x", x => xScale(x.poverty))
-    .attr("y", y => yScale(y.healthcare));
+    .attr("y", y => yScale(y.healthcare))
+    .attr("text-anchor", "middle")
+    .attr("font-size", 11);
+
+    // Append y axis label
+    chartGroup.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 0 - margin.left)
+    .attr("x", 0 - (height / 2) - 100)
+    .attr("dy", "1em")
+    .classed("axis-text", true)
+    .text("Number of Billboard 500 Hits");
 });
