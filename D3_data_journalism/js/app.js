@@ -69,6 +69,14 @@ d3.csv("D3_data_journalism/data/data.csv").then(function(csvdata) {
     .attr("cy", y => yScale(y.healthcare))
     .attr("r", 10)
     .attr("fill", "pink")
-    .attr("opacity", ".5");
+    .attr("opacity", ".8");
 
+    // State abbreviations
+    var circles_abbr = chartGroup.selectAll("text")
+    .data(csvdata)
+    .enter()
+    .append("text")
+    .text(z => z.abbr)
+    .attr("x", x => xScale(x.poverty))
+    .attr("y", y => yScale(y.healthcare));
 });
