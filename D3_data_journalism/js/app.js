@@ -29,8 +29,8 @@ var chartGroup = svg.append("g")
 .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 // Retrieve data from the CSV file and execute everything below
-d3.csv("data.csv").then(function(data) {
+d3.csv("D3_data_journalism/data/data.csv").then(function(data) {
 
-    
+    console.log(data)
 
 });
