@@ -36,7 +36,17 @@ d3.csv("D3_data_journalism/data/data.csv").then(function(csvdata) {
     csvdata.forEach(function(data) {
         data.poverty = +data.poverty;
         data.healthcare = +data.healthcare;
-        console.log(data.healthcare)
+        // console.log(data.healthcare)
     });
 
+    // scales
+    var xScale = d3.scaleLinear()
+    .domain(d3.min(csvdata, x => x.poverty), [d3.max(csvdata, x => x.poverty)])
+    .range([0, width]);
+
+    var yScale = d3.scaleLinear()
+    .domain(d3.min(csvdata, x => x.healthcare), [d3.max(csvdata, x => x.healthcare)])
+    .range([height, 0]);
+
+    
 });
