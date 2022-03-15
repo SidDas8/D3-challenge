@@ -39,7 +39,7 @@ d3.csv("D3_data_journalism/data/data.csv").then(function(csvdata) {
         // console.log(data.healthcare)
     });
 
-    // scales
+    // Scales for x and y axis
     var xScale = d3.scaleLinear()
     .domain(d3.min(csvdata, x => x.poverty), [d3.max(csvdata, x => x.poverty)])
     .range([0, width]);
@@ -48,5 +48,9 @@ d3.csv("D3_data_journalism/data/data.csv").then(function(csvdata) {
     .domain(d3.min(csvdata, x => x.healthcare), [d3.max(csvdata, x => x.healthcare)])
     .range([height, 0]);
 
-    
+    // Create initial axis functions
+  var bottomAxis = d3.axisBottom(xScale);
+  var leftAxis = d3.axisLeft(yScale);
+
+
 });
