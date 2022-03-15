@@ -29,8 +29,14 @@ var chartGroup = svg.append("g")
 .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 // Retrieve data from the CSV file and execute everything below
-d3.csv("D3_data_journalism/data/data.csv").then(function(data) {
+d3.csv("D3_data_journalism/data/data.csv").then(function(csvdata) {
+    console.log(csvdata)
 
-    console.log(data)
+    // Parse data as number
+    csvdata.forEach(function(data) {
+        data.poverty = +data.poverty;
+        data.healthcare = +data.healthcare;
+        console.log(data.healthcare)
+    });
 
 });
