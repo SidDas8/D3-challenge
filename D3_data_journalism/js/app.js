@@ -49,8 +49,17 @@ d3.csv("D3_data_journalism/data/data.csv").then(function(csvdata) {
     .range([height, 0]);
 
     // Create initial axis functions
-  var bottomAxis = d3.axisBottom(xScale);
-  var leftAxis = d3.axisLeft(yScale);
+    var bottomAxis = d3.axisBottom(xScale);
+    var leftAxis = d3.axisLeft(yScale);
+
+    // Append x axis
+    var xAxis = chartGroup.append("g")
+    .attr("transform", `translate(0, ${height})`)
+    .call(bottomAxis);
+
+    // Append y axis
+    chartGroup.append("g")
+    .call(leftAxis);
 
 
 });
