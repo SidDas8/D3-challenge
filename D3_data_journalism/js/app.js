@@ -23,3 +23,14 @@ var svg = d3
   .append("svg")
   .attr("width", svgWidth)
   .attr("height", svgHeight);
+
+// Append an SVG group
+var chartGroup = svg.append("g")
+.attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+// Retrieve data from the CSV file and execute everything below
+d3.csv("data.csv").then(function(data) {
+
+    
+
+});
